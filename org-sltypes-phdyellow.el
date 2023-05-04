@@ -38,7 +38,6 @@
 (require 'org-sltypes)
 (require 'transient)
 (require 'cl-lib)
-(require 'subr)
 ;; (defvar org-slt-phdyellow-map (make-sparse-keymap)
   ;; "Keymap used for `org-slt-phdyellow' link types map ")
 
