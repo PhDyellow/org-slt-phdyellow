@@ -38,8 +38,6 @@
 (require 'org-sltypes)
 (require 'transient)
 (require 'cl-lib)
-;; (defvar org-slt-phdyellow-map (make-sparse-keymap)
-  ;; "Keymap used for `org-slt-phdyellow' link types map ")
 
 (transient-define-prefix org-slt-phdyellow ()
   "Transient for create org-super-links with types.
@@ -77,37 +75,37 @@ Users may add additional link types with `transient-insert-suffix' and related."
 			      ("r" "Pursues" org-slt-phdyellow-pursues)
 			      ]
 		]
-		(interactive)
-		(if (eq major-mode 'org-mode)
-		    (transient-setup 'org-slt-phdyellow)
-		  (message "Not in an org-mode buffer")))
+  (interactive)
+  (if (eq major-mode 'org-mode)
+      (transient-setup 'org-slt-phdyellow)
+    (message "Not in an org-mode buffer")))
 
 
 (transient-define-suffix org-slt-phdyellow-authored (args)
   "Author / Authored_by link"
   (interactive (list (transient-args 'org-slt-phdyellow)))
   (org-sltypes-link (transient-arg-value "backlink" args)
-		   (transient-arg-value "inline" args)
-		   (transient-arg-value "stored" args)
-		   "AUTHORED_BY"
-		   "AUTHOR_OF"
-                   'org-sltypes-time-stamp-inactive
-                   'org-sltypes-time-stamp-inactive
-                   nil
-                   nil))
+		    (transient-arg-value "inline" args)
+		    (transient-arg-value "stored" args)
+		    "AUTHORED_BY"
+		    "AUTHOR_OF"
+                    'org-sltypes-time-stamp-inactive
+                    'org-sltypes-time-stamp-inactive
+                    nil
+                    nil))
 
 (transient-define-suffix org-slt-phdyellow-published (args)
   "Published / Published_by link"
   (interactive (list (transient-args 'org-slt-phdyellow)))
   (org-sltypes-link (transient-arg-value "backlink" args)
-		   (transient-arg-value "inline" args)
-		   (transient-arg-value "stored" args)
-		   "PUBLISHED_BY"
-		   "PUBLISHER_OF"
-                   'org-sltypes-time-stamp-inactive
-                   'org-sltypes-time-stamp-inactive
-                   nil
-                   nil))
+		    (transient-arg-value "inline" args)
+		    (transient-arg-value "stored" args)
+		    "PUBLISHED_BY"
+		    "PUBLISHER_OF"
+                    'org-sltypes-time-stamp-inactive
+                    'org-sltypes-time-stamp-inactive
+                    nil
+                    nil))
 
 (transient-define-suffix org-slt-phdyellow-contains (args)
   "Contains other thing"
