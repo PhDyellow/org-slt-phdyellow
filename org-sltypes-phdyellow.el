@@ -46,33 +46,27 @@ This function defines a set of types from org-slt-phdyellow.
 Users may add additional link types with `transient-insert-suffix' and related."
 
   [:description "Create link with backlink"
-		[:description "Switches"
-			      :pad-keys t
-			      :class transient-row
-			      ("a" "Invert backlink: Create a forward link to this node from other node" "backlink");;something that sets toggles)
-			      ("s" "Use stored link, created by org-super-links-store-link" "stored");; toggle
-			      ("d" "Make forward link inline. Not compatible with Invert Backlink" "inline");;toggle
-			      ]
-		;; [:description "Link types"
-		;; 	      :pad-keys t
-		;; 	      :class 'transient-columns
-		;; 	      ("f" "link-type="  :choices 'org-slt-phdyellow-link-types)
-		;; 	      ]
-		;; [:description "Create Link"
-		;; 	      ("RET" "Create" org-slt-phdyellow-create-link)]
 		[:description "Link Types"
+			      :pad-keys t
 			      ("u" "Author of" org-slt-phdyellow-authored)
 			      ("i" "Published" org-slt-phdyellow-published)
 			      ("o" "Contains" org-slt-phdyellow-contains)
 			      ("j" "Sparks" org-slt-phdyellow-sparks)
 			      ("l" "Leads to" org-slt-phdyellow-leads-to)
 			      ("k" "Employs" org-slt-phdyellow-employs)
-			      ("m" "Colleague" org-slt-phdyellow-colleague)
+			      ("m" "Colleague" org-slt-phdyellow-colleagues)
 			      ("n" "Supports" org-slt-phdyellow-supports)
 			      ("v" "Contradicts" org-slt-phdyellow-contradicts)
 			      ("c" "Agrees with" org-slt-phdyellow-agrees)
 			      ("x" "Actions" org-slt-phdyellow-actions)
 			      ("r" "Pursues" org-slt-phdyellow-pursues)
+			      ]
+		[:description "Switches"
+			      :pad-keys t
+			      :class transient-row
+			      ("a" "Invert backlink: Create a forward link to this node from other node" "backlink");;something that sets toggles)
+			      ("s" "Use stored link, created by org-super-links-store-link" "stored");; toggle
+			      ("d" "Make forward link inline. Not compatible with Invert Backlink" "inline");;toggle
 			      ]
 		]
   (interactive)
@@ -225,7 +219,7 @@ Users may add additional link types with `transient-insert-suffix' and related."
                     nil
                     nil))
 
-(transient-define-suffix org-slt-phdyellow-leads (args)
+(transient-define-suffix org-slt-phdyellow-leads-to (args)
   "Leads to other thing"
   (interactive (list (transient-args 'org-slt-phdyellow)))
   (org-sltypes-link (transient-arg-value "backlink" args)
